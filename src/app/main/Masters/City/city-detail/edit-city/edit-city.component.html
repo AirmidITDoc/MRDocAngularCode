@@ -1,0 +1,81 @@
+<div class="main-content">
+    <div class="form-section">
+        <div class="header-container" fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap="4px"
+            fxLayoutAlign="space-between">
+            <span style="font-size: 22px; font-weight: 500; color: #fff;width: auto;">Edit City Details</span>
+            <span style="color: aqua;padding-left:450px;">Todays Date :{{Today | date :'shortDate'}} </span>
+            <span class="material-icons" (click)="onClose()" style="cursor: pointer; margin-left: 24px; color: #fff;">
+                close
+            </span>
+
+        </div>
+        <!-- <button class="back-btn" id="auto_trigger" (click)="setDropdownObjs1()" style="border-radius: 16px;display: none;">
+          Show
+        </button> -->
+        <div class="form-div">
+
+            <br />
+
+            <form [formGroup]="_CitydetailService.citysaveForm">
+                <!-- 
+          <div style="float:right;color: blue;font-weight: bold;">
+            <h3>Todays Date :{{Today | date :'shortDate'}} </h3>
+  
+          </div>
+          <br> -->
+                <div style="padding: 7px;">
+                    <div fxFlexFill fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap="10px">
+
+                        
+                          
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>Head Quarter</mat-label>
+                            <mat-select formControlName="HeadQuarterID" placeholder="Bank" #singleSelect>
+                              <mat-option>
+                                <ngx-mat-select-search [formControl]="CityFilterCtrl" [placeholderLabel]="'Search'"
+                                  [noEntriesFoundLabel]="'No matching found'"></ngx-mat-select-search>
+                              </mat-option>
+                              <mat-option *ngFor="let element of filteredcity | async" [value]="element">
+                                {{element.HqName}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>Track Name</mat-label>
+                            <input name="CityName" [(ngModel)]="CityName" formControlName="CityName"
+                                placeholder="CityName" matInput >
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>KiloMeter</mat-label>
+                            <input name="KiloMeter" [(ngModel)]="KiloMeter" formControlName="KiloMeter"
+                                placeholder="KiloMeter" matInput>
+                        </mat-form-field>
+
+
+
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>DailyAllowance</mat-label>
+                            <input name="DailyAllowance" [(ngModel)]="DailyAllowance" formControlName="DailyAllowance"
+                                placeholder="DailyAllowance" matInput >
+                        </mat-form-field>
+
+                      
+                    </div>
+
+
+
+
+                    <div style="float: right;margin-top: 30px;">
+                        <button class="next-btn" (click)="onSubmit()" style="border-radius: 16px;">Update</button>
+                        <button class="footer-btn" (click)="onClose()">Cancel</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <!-- </form> -->
+    </div>
+</div>

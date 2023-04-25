@@ -1,0 +1,130 @@
+.mat-dialog-content {
+    //height: 100%;
+    max-height: 900px !important;
+    display: block;
+    // margin: 0px 0px;
+}
+
+.dob {
+    width: 20px;
+}
+
+.mat-card {
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.mat-h1,
+.mat-headline,
+.mat-typography h1 {
+    margin: 0 0 5px;
+}
+
+.mat-dialog-title {
+    margin-bottom: 2px;
+}
+
+.error {
+    color: red;
+}
+
+.main-content {
+    display: flex;
+    //width: auto;
+    // min-height: 100%;
+    max-height: 650px !important;
+
+
+
+}
+
+.material-icons {
+    font-size: 25px;
+}
+
+.form-section {
+    width: 100%;
+    // padding: 20px;
+    // height: 500px;
+}
+
+
+
+.form-section .mat-form-field .mat-form-field-subscript-wrapper {
+    position: relative !important;
+}
+
+.register-container {
+    padding: 0 0 0 24px;
+    align-items: center;
+}
+
+.footer-navigation-container {
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+.header-container {
+    background-color: #165c7f !important;
+    height: 40px;
+    padding: 0 15px;
+    align-items: center !important;
+}
+
+//Sidenav
+
+//
+.select {
+    color: blueviolet;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: rgb(151, 197, 232);
+    box-shadow: 5px 5px 5px rgb(62, 175, 241) !important;
+}
+
+.mat-table {
+    height: 1000px !important;
+
+    width: 100%;
+    background: transparent;
+    box-shadow: none;
+}
+
+#table1 {
+    .mat-row {
+        width: 100%;
+        max-width: 1310px;
+        min-width: 1310px;
+        margin-top: 15px;
+        min-height: 400px;
+    }
+
+    .mat-column-days1 {
+        width: 70px;
+        max-width: 70px;
+        min-width: 70px;
+        text-align: left;
+        margin-top: 15px;
+        // background-color: #3C9CE5;
+    }
+
+    .mat-column-CityId {
+        width: 680px;
+        max-width: 680px;
+        min-width: 680px;
+        // background-color: #7ee76b;
+        margin-right: 15px;
+    }
+
+    .mat-column-DoctorId {
+        width: 680px;
+        max-width: 680px;
+        min-width: 680px;
+        // background-color: #d3b21f;
+    }
+}
