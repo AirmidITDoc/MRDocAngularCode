@@ -20,14 +20,15 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class NewCityComponent implements OnInit {
 
-  CityList:any=[];
+  HeadQList:any=[];
   Today=[new Date().toISOString()];
   DailyAllowance:any;
   KiloMeter:any;
   CityName:any;
-  // City filter
-  public CityFilterCtrl: FormControl = new FormControl();
-  public filteredcity: ReplaySubject<any> = new ReplaySubject<any>(1);
+
+  // HeadQuarter filter
+  public HeadquarterFilterCtrl: FormControl = new FormControl();
+  public filteredheadquarter: ReplaySubject<any> = new ReplaySubject<any>(1);
 
   
   private _onDestroy = new Subject<void>();
@@ -61,10 +62,10 @@ export class NewCityComponent implements OnInit {
     this.getHquaterList();
   
   
-    this.CityFilterCtrl.valueChanges
+    this.HeadquarterFilterCtrl.valueChanges
       .pipe(takeUntil(this._onDestroy))
       .subscribe(() => {
-        this.filterCity();
+        this.filterHeadQuarter();
       });
 
    
@@ -83,24 +84,24 @@ export class NewCityComponent implements OnInit {
   // get f() { return this._CitydetailService.citysaveForm.controls }
 
  
-  // City filter code
-  private filterCity() {
+  // Headquarter filter code
+  private filterHeadQuarter() {
 
-    if (!this.CityList) {
+    if (!this.HeadQList) {
       return;
     }
     // get the search keyword
-    let search = this.CityFilterCtrl.value;
+    let search = this.HeadquarterFilterCtrl.value;
     if (!search) {
-      this.filteredcity.next(this.CityList.slice());
+      this.filteredheadquarter.next(this.HeadQList.slice());
       return;
     }
     else {
       search = search.toLowerCase();
     }
     // filter
-    this.filteredcity.next(
-      this.CityList.filter(bank => bank.HqName.toLowerCase().indexOf(search) > -1)
+    this.filteredheadquarter.next(
+      this.HeadQList.filter(bank => bank.HqName.toLowerCase().indexOf(search) > -1)
     );
   }
   
@@ -121,10 +122,10 @@ export class NewCityComponent implements OnInit {
  
   getHquaterList() {
     this._CitydetailService.geHeadquaterList().subscribe(data => {
-      this.CityList = data;
-      console.log(this.CityList);
-      this.filteredcity.next(this.CityList.slice());
-      this.CityList.citysaveForm.get('HeadQuarterId').setValue(this.CityList[0]);
+      this.HeadQList = data;
+      console.log(this.HeadQList);
+      this.filteredheadquarter.next(this.HeadQList.slice());
+      this.HeadQList.citysaveForm.get('HeadQuarterId').setValue(this.HeadQList[0]);
     });
   }
 

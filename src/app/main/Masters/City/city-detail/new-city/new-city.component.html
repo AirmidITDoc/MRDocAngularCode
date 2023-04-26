@@ -31,10 +31,10 @@
                             <mat-label>Head Quarter</mat-label>
                             <mat-select formControlName="HeadQuarterID" placeholder="Bank" #singleSelect>
                               <mat-option>
-                                <ngx-mat-select-search [formControl]="CityFilterCtrl" [placeholderLabel]="'Search'"
+                                <ngx-mat-select-search [formControl]="HeadquarterFilterCtrl" [placeholderLabel]="'Search'"
                                   [noEntriesFoundLabel]="'No matching found'"></ngx-mat-select-search>
                               </mat-option>
-                              <mat-option *ngFor="let element of filteredcity | async" [value]="element">
+                              <mat-option *ngFor="let element of filteredheadquarter | async" [value]="element">
                                 {{element.HqName}}
                               </mat-option>
                             </mat-select>

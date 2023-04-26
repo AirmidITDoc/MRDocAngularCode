@@ -64,13 +64,13 @@
                         <mat-form-field appearance="outline" fxFlex>
                             <mat-label>DailyAllowance</mat-label>
                             <input name="DailyAllowance" [(ngModel)]="DailyAllowance" formControlName="DailyAllowance"
-                                placeholder="DailyAllowance" matInput >
+                                placeholder="DailyAllowance" matInput type="number">
                         </mat-form-field>
 
                         <mat-form-field appearance="outline" fxFlex>
                             <mat-label>FuelRate</mat-label>
                             <input name="FuelRate" [(ngModel)]="FuelRate" formControlName="FuelRate"
-                                placeholder="FuelRate" matInput>
+                                placeholder="FuelRate" matInput type="number">
                         </mat-form-field>
 
                     </div>
@@ -90,7 +90,7 @@
                         <mat-form-field appearance="outline" fxFlex>
                             <mat-label>MobileNo</mat-label>
                             <input name="MobileNo" formControlName="MobileNo" [(ngModel)]="MobileNo" placeholder=" MobileNo"
-                                matInput>
+                                matInput type="number">
                         </mat-form-field>
                         <mat-form-field appearance="outline" fxFlex>
                             <mat-label>EmailId</mat-label>
@@ -105,13 +105,13 @@
 
                         <mat-form-field appearance="outline" fxFlex>
                             <mat-label>Head Quarter</mat-label>
-                            <mat-select formControlName="CityId" placeholder="Bank" #singleSelect>
+                            <mat-select formControlName="HeadQuarterID" placeholder="Bank" #singleSelect>
                               <mat-option>
                                 <ngx-mat-select-search [formControl]="HeadquarterFilterCtrl" [placeholderLabel]="'Search'"
                                   [noEntriesFoundLabel]="'No matching found'"></ngx-mat-select-search>
                               </mat-option>
-                              <mat-option *ngFor="let element of filteredHQ | async" [value]="element">
-                                {{element.CityName}}
+                              <mat-option *ngFor="let element of filteredheadquarter | async" [value]="element">
+                                {{element.HqName}}
                               </mat-option>
                             </mat-select>
                           </mat-form-field>

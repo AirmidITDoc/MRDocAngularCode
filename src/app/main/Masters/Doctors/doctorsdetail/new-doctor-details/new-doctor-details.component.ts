@@ -67,8 +67,8 @@ export class NewDoctorDetailsComponent implements OnInit {
     
   console.log(this.data)
  
-    this.getCityList();
-    this.getQualificationList();
+    // this.getCityList();?
+        this.getQualificationList();
     this.getCityList();
     this.geSpecilazationList();
 
@@ -112,7 +112,7 @@ export class NewDoctorDetailsComponent implements OnInit {
     }
     // filter
     this.filteredcity.next(
-      this.CityList.filter(bank => bank.AccountType.toLowerCase().indexOf(search) > -1)
+      this.CityList.filter(bank => bank.CityName.toLowerCase().indexOf(search) > -1)
     );
   }
   

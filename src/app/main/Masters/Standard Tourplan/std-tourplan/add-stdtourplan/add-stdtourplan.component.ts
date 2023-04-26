@@ -14,7 +14,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { fuseAnimations } from '@fuse/animations';
-import { debug } from 'console';
+import { Console, debug } from 'console';
 import { yearsPerPage } from '@angular/material/datepicker';
 
 
@@ -41,7 +41,6 @@ export interface TouplanTable {
 export class AddStdtourplanComponent implements OnInit {
 
 
-
   isRowAdded: boolean = false;
   CityList: any = [];
   Dignosflist: any = [];
@@ -55,15 +54,21 @@ export class AddStdtourplanComponent implements OnInit {
   public Seldoctorflist = [];
 
   allCity: CityClass[] = [];
+
   citySelected: any[] = [];
   citySelected1: any[] = [];
+
   filteredCity: Observable<CityClass[]>;
   CityId: any;
+
+  allDeldoctor: DoctorClass[] = [];
+  doctorSelectednew: any[] = [];
   doctorSelected: any[] = [];
   doctorSelected1: any[] = [];
   filteredDoctor: Observable<DoctorClass[]>;
+  allDoctorbeforedel: DoctorClass[] = [];
   allDoctor: DoctorClass[] = [];
-
+  citydel: any = 0;
   TourplantableData: TouplanTable[] = [];
   selectable = true;
   // selectable1 = true;
@@ -111,6 +116,9 @@ export class AddStdtourplanComponent implements OnInit {
 
   ngOnInit(): void {
     this.doctorSelected1 = [];
+
+
+
     this.Today = new Date().toISOString();
     this.citySelected1 = [];
     if (this.data) {
@@ -124,6 +132,8 @@ export class AddStdtourplanComponent implements OnInit {
     this.getCityList();
     // this.getDoctorList();
 
+    // this.citySelected1[this.y]=this.allCity[0].CityId;
+    // this.y=+1;
 
     this.filteredCity = this._StdTourplanService.toursaveForm.get('cityContoller').valueChanges.pipe(
       startWith(''), map((ele: any | null) => ele ? this._filterCity(ele) : this.allCity.slice()));
@@ -154,6 +164,43 @@ export class AddStdtourplanComponent implements OnInit {
   remove(item: any, itemList): void {
 
 
+    this.allDoctorbeforedel = this.doctorSelected;
+    console.log(this.allDoctorbeforedel);
+
+    debugger
+
+    for (let j = 0; j < this.allCity.length - 1; j++) {
+      if (this.allCity[j].CityName == item)
+        this.citydel = this.allCity[j].CityId;
+        
+      this.CityId = this.allCity[j].CityId;
+      console.log(this.citydel);
+    }
+
+    if (this.citydel.length != 0) {
+      this.getDoctorList();
+      console.log(this.allDoctor);
+
+      this.allDeldoctor = this.allDoctor;
+      console.log(this.allDeldoctor);
+
+      let l = this.allDoctor.length
+      debugger;
+      for (let j = 0; j < l; j++) {
+        if (this.allDoctorbeforedel[j].DoctorName != this.allDoctor[j].DoctorName && l !=0 ) {
+
+          this.doctorSelectednew.push(this.allDoctor[j].DoctorName)
+          // console.log(this.allDeldoctor[j].DoctorName);
+        }
+        console.log(this.doctorSelectednew);
+        // }
+      }
+
+      this.doctorSelected = [];
+      this.doctorSelected = this.doctorSelectednew;
+      console.log(this.doctorSelected);
+    }
+
     const index = itemList.indexOf(item);
 
     if (index >= 0) {
@@ -163,7 +210,7 @@ export class AddStdtourplanComponent implements OnInit {
     this.citySelected = itemList;
 
     let l = this.citySelected.length
-    this.doctorSelected.length = 0;
+    // this.doctorSelected.length = 0;
     debugger;
 
 
@@ -213,23 +260,17 @@ export class AddStdtourplanComponent implements OnInit {
 
   selected(event: MatAutocompleteSelectedEvent, itemList, controller, inputItem): void {
     this.Cityflist = [];
-    console.log(itemList);
-    console.log(event.option.value);
 
     if (itemList.length == 0) {
       itemList.push(event.option.value);
     }
     else {
 
-      // console.log(itemList);
-      // console.log(this.Cityflist);
-      // this.Cityflist = itemList;
-      // console.log(this.Cityflist);
 
       let k = itemList.length;
 
       for (let d = 0; d < k; d++) {
-      
+
         if (itemList[d] != event.option.value)
           itemList.push(event.option.value);
 
@@ -238,18 +279,21 @@ export class AddStdtourplanComponent implements OnInit {
 
       console.log(itemList);
       this.Cityflist = itemList;
-    
+
 
 
       let l = this.Cityflist.length - 1
       let l1 = this.allCity.length - 1
       let CityName = this.Cityflist[l]
-      console.log(CityName);
+      // console.log(CityName);
 
 
       debugger;
-      this.citySelected1[this.y]=itemList[0].CityId;
-      this.y=+1;
+      let m = this.allCity[0].CityId;
+      console.log(m);
+      // if(this.allCity[0].CityId)
+
+
 
 
       for (let i = 0; i < l1; i++) {
@@ -300,6 +344,24 @@ export class AddStdtourplanComponent implements OnInit {
     }
 
 
+    debugger
+
+    // if (this.citydel != 0) {
+    //   this.allDeldoctor =this.allDoctor;
+    //   console.log(this.allDeldoctor);
+
+    //   let l = this.allDoctor.length
+
+    //   for (let j = 0; j < l; j++) {
+    //     if(this.allDeldoctor[j].DoctorName != this.allDoctor[j].DoctorName){
+
+    //     itemList.push(this.allDoctor[j].DoctorName)
+    //     console.log(this.allDeldoctor[j].DoctorName);
+    //     }
+    //     console.log(itemList);
+    //   }
+    // }
+
 
 
     if (inputItem == 'doctornput') {
@@ -328,9 +390,11 @@ export class AddStdtourplanComponent implements OnInit {
     this._StdTourplanService.geCityList1().subscribe((data: any) => {
       this.allCity = data;
       this.casePaperData = data[0];
-      debugger;
-      console.log(this.casePaperData);
-      console.log(this.allCity);
+
+
+
+      // console.log(this.casePaperData);
+      // console.log(this.allCity);
 
 
       let cityStringsArr = this.casePaperData.CityName.split(',');
@@ -348,12 +412,14 @@ export class AddStdtourplanComponent implements OnInit {
     });
     console.log(this.citySelected);
     console.log(this.citySelected1);
+
+
   }
 
   // casePaperData1: DoctorClass = new DoctorClass({});
 
   getDoctorList() {
-    debugger;
+    
     this.doctorSelected = this._StdTourplanService.toursaveForm.get('DoctorId').value;
     console.log(this.doctorSelected);
 
@@ -365,7 +431,7 @@ export class AddStdtourplanComponent implements OnInit {
     //   }
     // }
 
-
+debugger;
     var m = {
       "CityId": this.CityId
     }

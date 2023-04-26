@@ -76,4 +76,8 @@ export class DoctordetailService {
   public geSpecialList(){
     return this._httpClient.post("Generic/GetByProc?procName=Retrieve_SpecializationCombo", {})
   }
+
+  public geHeadquaterList(){
+    return this._httpClient.post("Generic/GetByProc?procName=Retrieve_HeadquaterCombo", {})
+  }
 }

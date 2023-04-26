@@ -20,6 +20,7 @@ const appRoutes: Routes = [
   {
     path: "AddCity",
     loadChildren: () => import("./City/city-detail/citydetail.module").then((m) => m.CitydetailModule),
+    // loadChildren: () => import("./Product/product-details/productdetail.module").then((m) => m.ProductdetailModule),
 
   },
   {

@@ -53,11 +53,11 @@ const appRoutes: Routes = [
     component: ProductDetailsComponent
 },
 {
-  // Yarn
-   path: "Contract Booking",
-   loadChildren: () =>
-  //  import("./invoice-list/invoice-list.module").then((m) => m.InvoiceListModule),
-  ProductDetailsComponent
+  // MRR
+   path: "ADMIN/AddCity",
+   loadChildren: () => ProductDetailsComponent
+  //  import("./b").then((m) => m.InvoiceListModule),
+  
 },
 ];
 @NgModule({

@@ -93,14 +93,14 @@
                        
 
                         <mat-form-field appearance="outline" fxFlex>
-                            <mat-label>Head Qurter Name</mat-label>
-                            <mat-select formControlName="HqId" placeholder="Bank" #singleSelect>
+                            <mat-label>City Name</mat-label>
+                            <mat-select formControlName="CityId" placeholder="Bank" #singleSelect>
                               <mat-option>
                                 <ngx-mat-select-search [formControl]="CityFilterCtrl" [placeholderLabel]="'Search'"
                                   [noEntriesFoundLabel]="'No matching found'"></ngx-mat-select-search>
                               </mat-option>
                               <mat-option *ngFor="let element of filteredcity | async" [value]="element">
-                                {{element.HqName}}
+                                {{element.CityName}}
                               </mat-option>
                             </mat-select>
                           </mat-form-field>
@@ -121,7 +121,7 @@
                         <mat-form-field appearance="outline" fxFlex>
                             <mat-label>MobileNo</mat-label>
                             <input name="MobileNo" formControlName="MobileNo" [(ngModel)]="MobileNo"
-                                placeholder=" MobileNo" matInput>
+                                placeholder=" MobileNo" matInput type="number">
                         </mat-form-field>
 
 

@@ -38,7 +38,7 @@
                     <mat-form-field appearance="outline" style="margin-left:30px;">
                         <mat-label>Enter a date range</mat-label>
                         <mat-date-range-input [rangePicker]="picker">
-                            <input matStartDate formControlName="start" placeholder="Start date"  (dateChange)="getDoctorList()">
+                            <input matStartDate formControlName="start" placeholder="Start date"  (dateChange)="getCityList()">
                             <input matEndDate formControlName="end" placeholder="End date">
                         </mat-date-range-input>
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -48,7 +48,7 @@
           
                     <mat-form-field appearance="outline" style="padding-left:10px;width:150px;"> 
                         <mat-label>Search Keyword Data</mat-label>
-                        <input name="Keyword" formControlName="Keyword" matInput (keyup)="getDoctorList()">
+                        <input name="Keyword" formControlName="Keyword" matInput (keyup)="getCityList()">
                         <!-- <span class="error"
                           *ngIf="f.FirstNameSearch.invalid && f.FirstNameSearch.touched">First Name is
                           required Enter only Alphabets</span> -->

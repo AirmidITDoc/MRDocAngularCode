@@ -38,7 +38,7 @@ export class MRDetailsService {
       MrName:'',
       Address:'',
       EmailId:'',
-      HqId:'',
+      HeadQuarterID:'',
       UserName:'',
       IdentityNo:'',
       MobileNo:'',
@@ -66,5 +66,8 @@ export class MRDetailsService {
 
   public geCityList(){
     return this._httpClient.post("Generic/GetByProc?procName=Retrieve_CityList", {})
+  }
+  public geHeadquaterList(){
+    return this._httpClient.post("Generic/GetByProc?procName=Retrieve_HeadquaterCombo", {})
   }
 }

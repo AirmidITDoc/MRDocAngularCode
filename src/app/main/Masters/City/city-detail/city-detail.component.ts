@@ -71,7 +71,7 @@ export class CityDetailComponent implements OnInit {
   }
 
 
-  getDoctorList() {
+  getCityList() {
     debugger;
     this.sIsLoading = 'loading-data';
     var D_data = {
@@ -152,7 +152,7 @@ console.log(row);
   
   dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed - Insert Action', result);
-    
+    this.getCityList();
   });
 }
 

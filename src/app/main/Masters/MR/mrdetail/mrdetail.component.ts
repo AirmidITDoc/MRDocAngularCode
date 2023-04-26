@@ -138,6 +138,7 @@ console.log(row);
      "DailyAllowance":row.DailyAllowance,
     "FuelRate":row.FuelRate,
     "Password":row.Password,
+    "Address":row.Address,
   "UserName":row.UserName,
    
   }
@@ -156,7 +157,7 @@ console.log(row);
   
   dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed - Insert Action', result);
-    
+    this.getMRList();
   });
 }
 

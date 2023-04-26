@@ -33,11 +33,12 @@ export class NewMRdetailsComponent implements OnInit {
   EmailId:any;
   UserName:any;
   MrId:any;
-  // Headquarter filter
-  public HeadquarterFilterCtrl: FormControl = new FormControl();
-  public filteredHQ: ReplaySubject<any> = new ReplaySubject<any>(1);
 
-  
+
+   // HeadQuarter filter
+   public HeadquarterFilterCtrl: FormControl = new FormControl();
+   public filteredheadquarter: ReplaySubject<any> = new ReplaySubject<any>(1);
+ 
   private _onDestroy = new Subject<void>();
 
 
@@ -66,14 +67,15 @@ export class NewMRdetailsComponent implements OnInit {
     
   console.log(this.data)
  
-    this.getHeadQurterList();
-  
+    
+  this.getHquaterList();
   
     this.HeadquarterFilterCtrl.valueChanges
       .pipe(takeUntil(this._onDestroy))
       .subscribe(() => {
-        this.filterHeadQ();
+        this.filterHeadQuarter();
       });
+
 
    
     
@@ -91,8 +93,9 @@ export class NewMRdetailsComponent implements OnInit {
   // get f() { return this._MRDetailsService.mrsaveForm.controls }
 
  
+  
   // Headquarter filter code
-  private filterHeadQ() {
+  private filterHeadQuarter() {
 
     if (!this.HeadQList) {
       return;
@@ -100,17 +103,29 @@ export class NewMRdetailsComponent implements OnInit {
     // get the search keyword
     let search = this.HeadquarterFilterCtrl.value;
     if (!search) {
-      this.filteredHQ.next(this.HeadQList.slice());
+      this.filteredheadquarter.next(this.HeadQList.slice());
       return;
     }
     else {
       search = search.toLowerCase();
     }
     // filter
-    this.filteredHQ.next(
-      this.HeadQList.filter(bank => bank.CityName.toLowerCase().indexOf(search) > -1)
+    this.filteredheadquarter.next(
+      this.HeadQList.filter(bank => bank.HqName.toLowerCase().indexOf(search) > -1)
     );
   }
+  
+
+  getHquaterList() {
+    this._MRDetailsService.geHeadquaterList().subscribe(data => {
+      this.HeadQList = data;
+      console.log(this.HeadQList);
+      this.filteredheadquarter.next(this.HeadQList.slice());
+      this.HeadQList.citysaveForm.get('HeadQuarterId').setValue(this.HeadQList[0]);
+    });
+  }
+
+
   
 
 
@@ -125,15 +140,7 @@ export class NewMRdetailsComponent implements OnInit {
 
  
 
-
  
-  getHeadQurterList() {
-    this._MRDetailsService.geCityList().subscribe(data => {
-      this.HeadQList = data;
-      this.filteredHQ.next(this.HeadQList.slice());
-      this.HeadQList.mrsaveForm.get('CityId').setValue(this.HeadQList[0]);
-    });
-  }
 
 
 
@@ -157,7 +164,7 @@ export class NewMRdetailsComponent implements OnInit {
             "Address": this._MRDetailsService.mrsaveForm.get('Address').value || '',
             "MobileNo": this._MRDetailsService.mrsaveForm.get('MobileNo').value || '',
             "EmailId": this._MRDetailsService.mrsaveForm.get('EmailId').value || 0,
-            "HqId": this._MRDetailsService.mrsaveForm.get('CityId').value.CityId || 0,
+            "HqId": this._MRDetailsService.mrsaveForm.get('HeadQuarterID').value.HqId || 0,
             "UserName": this._MRDetailsService.mrsaveForm.get('UserName').value || 0,
             "Password":  this._MRDetailsService.mrsaveForm.get('Password').value || '',
             "IdentityNo": this._MRDetailsService.mrsaveForm.get('IdentityNo').value || '',

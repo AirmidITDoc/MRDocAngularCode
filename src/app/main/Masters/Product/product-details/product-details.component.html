@@ -89,7 +89,7 @@
                 <div class="spinner-border text-danger"></div>
 
             </div>
-            <mat-table #table matSort [dataSource]="dataSource" [@animateStagger]="{value:'50'}" style="overflow: auto;width: 100%;margin-top: 2px;" class="table1">
+            <mat-table #table matSort [dataSource]="dataArray" [@animateStagger]="{value:'50'}" style="overflow: auto;width: 100%;margin-top: 2px;" class="table1">
             
                 <ng-container matColumnDef="ProductId">
                     <mat-header-cell *matHeaderCellDef mat-sort-header fxShow.gt-sm>ProductId</mat-header-cell>
